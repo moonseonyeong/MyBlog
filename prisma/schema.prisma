@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model blog_categories {
+  id   Int     @id @default(autoincrement())
+  name String? @db.VarChar(30)
+}
+
+model blog_posts {
+  id         Int       @id @default(autoincrement())
+  title      String?   @db.VarChar(255)
+  subtitle   String?   @db.VarChar(255)
+  content    String?   @db.Text
+  categoryId Int?
+  date       DateTime? @db.Date
+}
+
+model writing_categories {
+  id   Int     @id @default(autoincrement())
+  name String? @db.VarChar(255)
+}
+
+model writing_posts {
+  id         Int       @id @default(autoincrement())
+  title      String?   @db.VarChar(255)
+  writer     String?   @db.VarChar(255)
+  content    String?   @db.Text
+  categoryId Int?
+  date       DateTime? @db.Date
+}
