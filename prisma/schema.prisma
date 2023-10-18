@@ -8,30 +8,27 @@ datasource db {
   relationMode = "prisma"
 }
 
-model blog_categories {
+model categories {
   id   Int     @id @default(autoincrement())
   name String? @db.VarChar(30)
 }
 
-model blog_posts {
-  id         Int       @id @default(autoincrement())
-  title      String?   @db.VarChar(255)
-  subtitle   String?   @db.VarChar(255)
-  content    String?   @db.Text
-  categoryId Int?
-  date       DateTime? @db.Date
+model comments {
+  id      Int       @id @default(autoincrement())
+  name    String?   @db.VarChar(20)
+  post_id Int
+  text    String    @db.VarChar(100)
+  date    DateTime? @db.Date
+
+  @@index([post_id], map: "post_id_idx")
 }
 
-model writing_categories {
-  id   Int     @id @default(autoincrement())
-  name String? @db.VarChar(255)
-}
-
-model writing_posts {
-  id         Int       @id @default(autoincrement())
-  title      String?   @db.VarChar(255)
-  writer     String?   @db.VarChar(255)
-  content    String?   @db.Text
-  categoryId Int?
-  date       DateTime? @db.Date
+model posts {
+  id          Int       @id @default(autoincrement())
+  title       String?   @db.VarChar(255)
+  subtitle    String?   @db.VarChar(255)
+  content     String?   @db.Text
+  is_prev     Boolean
+  category_id Int?
+  date        DateTime? @db.Date
 }
