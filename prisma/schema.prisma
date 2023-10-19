@@ -31,4 +31,11 @@ model posts {
   is_prev     Boolean
   category_id Int?
   date        DateTime? @db.Date
+  like        Int?
+  series_id   Int?
+}
+
+model series {
+  id    Int     @id @default(autoincrement())
+  title String? @db.VarChar(255)
 }
