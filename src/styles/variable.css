@@ -87,6 +87,11 @@
   --green800: #007544;
   --green900: #005c36;
 
-  --overlay: rgba(0, 0, 0, 0.5);
-  --container-padding: 24px 128px;
+  --home-bg: #eff1f5;
+  --font-color: #21232c;
+}
+
+/* 다크테마 */
+[data-theme='dark'] {
+  --home-bg: #0f141b;
 }
