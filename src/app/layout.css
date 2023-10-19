@@ -1,11 +1,19 @@
 html,
-body {
+body,
+div#__container {
   margin: 0;
   height: 100%;
 }
 
 body {
-  margin: 0;
+  background-color: var(--home-bg);
+  color: var(--primary-font-color);
+}
+
+#__container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 * {
@@ -37,4 +45,13 @@ input[type='number']::-webkit-outer-spin-button {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+#__content_wrapper {
+  flex: 1;
+  display: flex;
+}
+
+#__content {
+  padding: 0 24px;
 }
