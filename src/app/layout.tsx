@@ -10,6 +10,7 @@ import Header from '@/components/common/Header';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://moon-develog.vercel.app/'),
   title: {
     default: 'moon_develog',
     template: '%s | moon_develog',

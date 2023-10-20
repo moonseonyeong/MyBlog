@@ -1,4 +1,5 @@
 import { getPost } from '@/api/post/getPost';
+import { BASE_URL } from '@/app/sitemap';
 import Post from '@/components/blocks/Post';
 import { Metadata } from 'next';
 
@@ -20,6 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.content,
+    alternates: {
+      canonical: `${BASE_URL}/posts/${post.id}`,
+    },
   };
 }
 
