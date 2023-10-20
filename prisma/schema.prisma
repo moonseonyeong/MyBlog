@@ -33,6 +33,7 @@ model posts {
   date        DateTime? @db.Date
   like        Int?
   series_id   Int?
+  view_cnt    Int?
 }
 
 model series {
