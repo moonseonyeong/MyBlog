@@ -10,8 +10,21 @@ import Header from '@/components/common/Header';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'SUN LOG',
-  description: 'SUN LOG',
+  title: {
+    default: 'moon_develog',
+    template: '%s | moon_develog',
+  },
+  description: 'moon_develog',
+  keywords: [
+    'moon_develop',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'JavaScript',
+    'CSS',
+    'HTML',
+    'moon_develog',
+  ],
 };
 
 export default function RootLayout({
