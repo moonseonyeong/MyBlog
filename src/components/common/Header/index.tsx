@@ -8,8 +8,6 @@ interface HeaderProps {
 }
 
 const Header = ({ isDarkMode }: HeaderProps) => {
-  console.log('Header', isDarkMode);
-
   return (
     <HeaderContainer>
       <div>HEADER</div>
