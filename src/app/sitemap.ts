@@ -18,5 +18,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: post.date,
   }));
 
-  return _postsUrl;
+  return [
+    {
+      url: '/',
+      lastModified: new Date(),
+    },
+  ];
 }
