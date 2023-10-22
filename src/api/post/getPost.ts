@@ -1,6 +1,13 @@
 import api from '..';
 
-export const getPosts = async () => {
-  const { data } = await api.get(`/post`);
+export const getPost = async (id: string) => {
+  const { data } = await api.get(`/posts/${id}`);
+
   return data;
+
+  // return await prisma.posts.findFirst({
+  //   where: {
+  //     id: Number(id),
+  //   },
+  // });
 };

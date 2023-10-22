@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   return (
     <Container gap={24}>
-      <Profile src='/assets/profile.png' />
+      <Profile src='/assets/profile.png' alt='my_profile' />
       <IconContainer>
         <GithubIcon />
         <BlogIcon />

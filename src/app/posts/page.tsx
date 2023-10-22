@@ -1,8 +1,14 @@
-import { getPosts } from '@/api/post/getPost';
-import Post from '@/components/blocks/Post';
+import { getPosts } from '@/api/post/getPosts';
+import Posts from '@/components/blocks/Posts';
+import { Metadata } from 'next';
 
-export default async function PostPage() {
+export const metadata: Metadata = {
+  title: `Posts`,
+  description: 'Posts',
+};
+
+export default async function PostsPage() {
   const posts = await getPosts();
 
-  return <Post />;
+  return <Posts />;
 }

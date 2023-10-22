@@ -7,11 +7,16 @@ import { cookies } from 'next/dist/client/components/headers';
 import Sidebar from '@/components/common/Sidebar';
 import Footer from '@/components/common/Footer';
 import Header from '@/components/common/Header';
+import { BASE_URL } from './sitemap';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'SUN LOG',
-  description: 'SUN LOG',
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: 'moon_develog',
+    template: '%s | moon_develog',
+  },
+  description: 'moon_develog',
 };
 
 export default function RootLayout({
