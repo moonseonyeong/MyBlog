@@ -2,8 +2,8 @@ import { getPost } from '@/api/post/getPost';
 import { ImageResponse } from 'next/server';
 
 export const size = {
-  width: 900,
-  height: 450,
+  width: 500,
+  height: 250,
 };
 
 export const contentType = 'image/png';
