@@ -7,7 +7,7 @@ import { cookies } from 'next/dist/client/components/headers';
 import Sidebar from '@/components/common/Sidebar';
 import Footer from '@/components/common/Footer';
 import Header from '@/components/common/Header';
-import { BASE_URL } from './sitemap';
+import { BASE_URL } from '@/api';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
