@@ -11,13 +11,13 @@ interface BlogData {
 const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}`;
 
 export default async function sitemap() {
-  const posts = await getPosts();
+  // const posts = await getPosts();
 
   // const url = `/posts`;
   // const response = await axios.get(url);
   // const response = await fetch(`http://localhost:3000/api/posts`);
 
-  // const response = await prisma.posts.findMany();
+  const response = await prisma.posts.findMany();
 
   // console.log(response);
 
