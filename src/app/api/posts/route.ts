@@ -24,7 +24,7 @@ export async function POST(req: Request) {
         content: post.content,
         subtitle: post.subtitle,
         date: post.date,
-        is_prev: false,
+        is_prev: 0,
       },
     });
 
