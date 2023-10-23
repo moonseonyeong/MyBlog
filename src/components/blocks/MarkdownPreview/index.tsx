@@ -5,6 +5,7 @@ import Preview from './Preview';
 import { InputChangeEvent, PostDataType } from './types';
 import { CategoryRes } from '@/api/category/getCategories';
 import Button from '@/components/common/Button';
+import { useCreatePost } from '@/api/post/useCreatePost';
 
 interface MarkdownPreviewProps {
   categories: CategoryRes[];
@@ -18,6 +19,7 @@ const MarkdownPreview = ({ categories }: MarkdownPreviewProps) => {
     categoryId: 0,
     date: new Date(),
   });
+  const { mutate: createPost } = useCreatePost();
 
   const handleInputChange = (e: InputChangeEvent) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
@@ -49,7 +51,7 @@ const MarkdownPreview = ({ categories }: MarkdownPreviewProps) => {
         </select>
       </Wrapper>
       <Preview content={postData.content} onChange={handleInputChange} />
-      <Button onClick={() => {}}>
+      <Button onClick={() => createPost(postData)}>
         <span>작성</span>
       </Button>
     </Container>
