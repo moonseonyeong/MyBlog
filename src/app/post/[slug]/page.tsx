@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PostPage({ params }: Props) {
   const post = await getPost(params.slug);
+  if (!post) return <div>Not Found</div>;
 
-  return <Post />;
+  return <Post post={post} />;
 }
