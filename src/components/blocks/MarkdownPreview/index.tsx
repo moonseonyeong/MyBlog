@@ -19,7 +19,13 @@ const MarkdownPreview = ({ categories }: MarkdownPreviewProps) => {
     categoryId: 0,
     date: new Date(),
   });
-  const { mutate: createPost } = useCreatePost();
+  const [secret, setSecret] = useState<string>('');
+
+  const { mutate: createPost } = useCreatePost({
+    onSuccess: (data) => {
+      alert(`등록 성공 🎉 | ID : ${data.id}`);
+    },
+  });
 
   const handleInputChange = (e: InputChangeEvent) => {
     setPostData({ ...postData, [e.target.name]: e.target.value });
@@ -49,9 +55,17 @@ const MarkdownPreview = ({ categories }: MarkdownPreviewProps) => {
             </option>
           ))}
         </select>
+
+        <input
+          name='secret'
+          type='text'
+          placeholder='secret'
+          value={secret}
+          onChange={(e) => setSecret(e.target.value)}
+        />
       </Wrapper>
       <Preview content={postData.content} onChange={handleInputChange} />
-      <Button onClick={() => createPost(postData)}>
+      <Button onClick={() => createPost({ postData, secret })}>
         <span>작성</span>
       </Button>
     </Container>

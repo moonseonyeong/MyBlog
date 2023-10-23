@@ -5,15 +5,21 @@ import { UseMutationOptionsType } from '../types';
 
 interface CreatePostRes {
   status: boolean;
+  id: number;
 }
 
-const createPost = async (post: PostDataType) => {
-  const { data } = await api.post<CreatePostRes>('/posts', { post });
+interface CreatePostBody {
+  postData: PostDataType;
+  secret: string;
+}
+
+const createPost = async ({ postData, secret }: CreatePostBody) => {
+  const { data } = await api.post<CreatePostRes>('/posts', { postData, secret });
 
   return data;
 };
 
-export const useCreatePost = (options?: UseMutationOptionsType<CreatePostRes, PostDataType>) => {
+export const useCreatePost = (options?: UseMutationOptionsType<CreatePostRes, CreatePostBody>) => {
   const queryClient = useQueryClient();
 
   return useMutation(createPost, {

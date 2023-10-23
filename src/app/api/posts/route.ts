@@ -10,28 +10,33 @@ export async function GET() {
 }
 
 type BodyType = {
-  post: PostDataType;
+  postData: PostDataType;
+  secret: string;
 };
 
 export async function POST(req: Request) {
-  const { post } = (await req.json()) as BodyType;
+  const { postData, secret } = (await req.json()) as BodyType;
+
+  const SECRET = process.env.NEXT_PUBLIC_SECRET;
+
+  if (secret !== SECRET) {
+    return getErrorResponse(401, 'unauthorized');
+  }
 
   try {
-    await prisma.posts.create({
+    const post = await prisma.posts.create({
       data: {
-        category_id: post.categoryId,
-        title: post.title,
-        content: post.content,
-        subtitle: post.subtitle,
-        date: post.date,
-        is_prev: 0,
+        category_id: postData.categoryId,
+        title: postData.title,
+        content: postData.content,
+        subtitle: postData.subtitle,
+        date: postData.date,
       },
     });
 
-    console.log(post);
-
     const response = {
       status: true,
+      id: post.id,
     };
 
     return new NextResponse(JSON.stringify(response), {
