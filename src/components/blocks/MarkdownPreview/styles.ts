@@ -8,6 +8,6 @@ export const Container = styled(FlexColumnBox)`
   gap: 24px;
 `;
 
-export const TitleWrapper = styled(FlexBox)`
+export const Wrapper = styled(FlexBox)`
   gap: 8px;
 `;

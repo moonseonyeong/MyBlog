@@ -1,9 +1,10 @@
 'use client';
 import { useState } from 'react';
-import { Container, TitleWrapper } from './styles';
+import { Container, Wrapper } from './styles';
 import Preview from './Preview';
 import { InputChangeEvent, PostDataType } from './types';
 import { CategoryRes } from '@/api/category/getCategories';
+import Button from '@/components/common/Button';
 
 interface MarkdownPreviewProps {
   categories: CategoryRes[];
@@ -24,7 +25,7 @@ const MarkdownPreview = ({ categories }: MarkdownPreviewProps) => {
 
   return (
     <Container>
-      <TitleWrapper>
+      <Wrapper>
         <input
           name='title'
           type='text'
@@ -39,8 +40,18 @@ const MarkdownPreview = ({ categories }: MarkdownPreviewProps) => {
           value={postData.subtitle}
           onChange={handleInputChange}
         />
-      </TitleWrapper>
+        <select name='categoryId' value={postData.categoryId} onChange={handleInputChange}>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </Wrapper>
       <Preview content={postData.content} onChange={handleInputChange} />
+      <Button onClick={() => {}}>
+        <span>작성</span>
+      </Button>
     </Container>
   );
 };
