@@ -1,7 +1,16 @@
+import { getCategories } from '@/api/category/getCategories';
 import MarkdownPreview from '@/components/blocks/MarkdownPreview';
+import { Metadata } from 'next';
 
-const MarkdownPreviewPage = () => {
-  return <MarkdownPreview />;
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    nocache: true,
+  },
 };
 
-export default MarkdownPreviewPage;
+export default async function MarkdownPreviewPage() {
+  const categories = await getCategories();
+
+  return <MarkdownPreview categories={categories} />;
+}

@@ -3,8 +3,13 @@ import { useState } from 'react';
 import { Container, TitleWrapper } from './styles';
 import Preview from './Preview';
 import { InputChangeEvent, PostDataType } from './types';
+import { CategoryRes } from '@/api/category/getCategories';
 
-const MarkdownPreview = () => {
+interface MarkdownPreviewProps {
+  categories: CategoryRes[];
+}
+
+const MarkdownPreview = ({ categories }: MarkdownPreviewProps) => {
   const [postData, setPostData] = useState<PostDataType>({
     title: '',
     subtitle: '',
