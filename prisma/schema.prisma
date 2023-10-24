@@ -28,7 +28,7 @@ model posts {
   title       String?   @db.VarChar(255)
   subtitle    String?   @db.VarChar(255)
   content     String?   @db.Text
-  is_prev     Boolean
+  is_prev     Int       @default(0)
   category_id Int?
   date        DateTime? @db.Date
   like        Int?
@@ -39,4 +39,17 @@ model posts {
 model series {
   id    Int     @id @default(autoincrement())
   title String? @db.VarChar(255)
+}
+
+model old_posts {
+  id          Int       @id @default(autoincrement())
+  title       String?   @db.VarChar(255)
+  subtitle    String?   @db.VarChar(255)
+  content     String?   @db.Text
+  is_prev     Boolean
+  category_id Int?
+  date        DateTime? @db.Date
+  like        Int?
+  series_id   Int?
+  view_cnt    Int?
 }
