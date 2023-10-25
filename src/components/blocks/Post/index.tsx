@@ -26,4 +26,8 @@ export const Container = styled(FlexColumnBox)`
   flex-wrap: wrap;
   width: 100%;
   overflow-x: scroll;
+
+  * img {
+    width: 100%;
+  }
 `;
