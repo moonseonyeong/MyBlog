@@ -18,8 +18,14 @@ export const CategoryWrapper = styled(FlexColumnBox)`
   gap: 8px;
 `;
 
-export const Category = styled.a`
+export const Category = styled.a<{ isSelected: boolean }>`
   cursor: pointer;
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      color: var(--primary-color);
+      font-weight: 700;
+    `}
 `;
 
 export const Profile = styled.img`

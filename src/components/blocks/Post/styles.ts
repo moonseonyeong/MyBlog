@@ -6,7 +6,7 @@ export const PostContainer = styled(FlexColumnBox)`
   width: 100%;
 
   img {
-    width: 90%;
+    width: 50%;
   }
 
   a {

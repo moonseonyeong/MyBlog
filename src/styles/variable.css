@@ -11,20 +11,31 @@
   --grey900: #1e2023;
 
   --home-bg: #eff1f5;
-  --primary-font-color: #21232c;
+  --primary-font-color: #1e2023;
   --secondary-font-color: #0a0c10;
+  --link-color: #14b8a6;
+
+  --secondary-color: #65656d;
 
   --tag-background-color: #f8f9fa;
   --tag-border-color: #e6e8ea;
   --tag-text-color: #47bfbd;
+
+  --card-background: #f8f9fa; /* #f5f7fa */
 }
 
 /* 다크테마 */
 [data-theme='dark'] {
   --home-bg: #0f141b;
-  --primary-font-color: #f2f5f7;
+  --primary-font-color: #899bbc;
   --secondary-font-color: #ffffff;
+  --link-color: #56d8d4;
+
+  --secondary-color: #7a89a7;
+
   --tag-background-color: #123248;
   --tag-border-color: #123248;
   --tag-text-color: #56d7d5;
+
+  --card-background: #312f45;
 }
