@@ -13,6 +13,10 @@
   --home-bg: #eff1f5;
   --primary-font-color: #21232c;
   --secondary-font-color: #0a0c10;
+
+  --tag-background-color: #f8f9fa;
+  --tag-border-color: #e6e8ea;
+  --tag-text-color: #47bfbd;
 }
 
 /* 다크테마 */
@@ -20,4 +24,7 @@
   --home-bg: #0f141b;
   --primary-font-color: #f2f5f7;
   --secondary-font-color: #ffffff;
+  --tag-background-color: #123248;
+  --tag-border-color: #123248;
+  --tag-text-color: #56d7d5;
 }

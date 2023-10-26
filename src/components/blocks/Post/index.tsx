@@ -1,24 +1,31 @@
 'use client';
 import parse from 'html-react-parser';
-import { PostCategory, PostContainer, PostDate, PostTitle, Content } from './styles';
-import { FlexBox } from '@/styles/common';
+import {
+  PostCategory,
+  PostContainer,
+  PostDate,
+  PostTitle,
+  Content,
+  PostInfoWrapper,
+} from './styles';
 import { formatDateYYYYMMDD } from '@/utils/date';
 import { GetPostType } from '@/api/post/types';
+import Markdown from 'react-markdown';
 
-type P = {
+type PostProps = {
   post: GetPostType;
 };
 
-const Post = ({ post }: P) => {
+const Post = ({ post }: PostProps) => {
   return (
     <PostContainer>
       <PostTitle>{post.title}</PostTitle>
-      <FlexBox>
+      <PostInfoWrapper>
         <PostDate>{formatDateYYYYMMDD(new Date(post.date))}</PostDate>
-        <PostCategory>{post.category_id}</PostCategory>
-      </FlexBox>
+        <PostCategory>{post.category}</PostCategory>
+      </PostInfoWrapper>
 
-      <Content>{parse(post.content)}</Content>
+      {post.isPrev ? <Content>{parse(post.content)}</Content> : <Markdown>{post.content}</Markdown>}
     </PostContainer>
   );
 };

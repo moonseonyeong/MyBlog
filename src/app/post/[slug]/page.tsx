@@ -9,26 +9,26 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPost(params.slug);
+  try {
+    const post = await getPost(params.slug);
 
-  if (!post)
+    return {
+      title: post.title,
+      description: post.content,
+      alternates: {
+        canonical: `/post/${post.id}`,
+      },
+    };
+  } catch (error) {
     return {
       title: 'Not Found',
-      description: 'The page is not found',
+      description: 'The post is not found',
     };
-
-  return {
-    title: post.title,
-    description: post.content,
-    alternates: {
-      canonical: `/post/${post.id}`,
-    },
-  };
+  }
 }
 
 export default async function PostPage({ params }: Props) {
   const post = await getPost(params.slug);
-  if (!post) return <div>Not Found</div>;
 
   return <Post post={post} />;
 }
