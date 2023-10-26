@@ -4,9 +4,7 @@ export type GetPostType = {
   subtitle: string;
   content: string;
   date: string;
-  category_id: number;
-  is_prev: boolean;
+  category: string;
+  isPrev: boolean;
   like: number;
-  view_cnt: number;
-  series_id: number;
 };

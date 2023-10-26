@@ -11,6 +11,9 @@ datasource db {
 model categories {
   id   Int     @id @default(autoincrement())
   name String? @db.VarChar(30)
+
+  posts posts[]
+  old_posts old_posts[]
 }
 
 model comments {
@@ -34,6 +37,8 @@ model posts {
   like        Int?
   series_id   Int?
   view_cnt    Int?
+
+  category    categories?   @relation(fields: [category_id], references: [id])
 }
 
 model series {
@@ -52,4 +57,6 @@ model old_posts {
   like        Int?
   series_id   Int?
   view_cnt    Int?
+  
+  category    categories?   @relation(fields: [category_id], references: [id])
 }

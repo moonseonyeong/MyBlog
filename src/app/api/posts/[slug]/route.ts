@@ -1,24 +1,47 @@
 import { prisma } from '@/lib/prisma';
+import { getErrorResponse } from '@/utils/helpers';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   const params = request.nextUrl.pathname;
   const id = Number(params.split('/')[3]);
-  let post;
+  let _post;
+  const prevPostNum = Number(process.env.NEXT_PUBLIC_PREV_POST_NUM);
 
-  if (id <= 170) {
-    post = await prisma.old_posts.findFirst({
+  if (id <= prevPostNum) {
+    _post = await prisma.old_posts.findFirst({
       where: {
         id: id,
+      },
+      include: {
+        category: true,
       },
     });
   } else {
-    post = await prisma.posts.findFirst({
+    _post = await prisma.posts.findFirst({
       where: {
         id: id,
       },
+      include: {
+        category: true,
+      },
     });
   }
+
+  if (!_post) {
+    return getErrorResponse(404, 'Post not found');
+  }
+
+  const post = {
+    id: _post.id,
+    title: _post.title,
+    content: _post.content,
+    category: _post.category?.name,
+    date: _post.date,
+    isPrev: _post.is_prev,
+    like: _post.like,
+    subTitle: _post.subtitle,
+  };
 
   return NextResponse.json(post);
 }
