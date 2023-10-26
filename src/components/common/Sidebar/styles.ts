@@ -18,7 +18,7 @@ export const CategoryWrapper = styled(FlexColumnBox)`
   gap: 8px;
 `;
 
-export const Category = styled.div`
+export const Category = styled.a`
   cursor: pointer;
 `;
 
