@@ -3,12 +3,12 @@ import { useState } from 'react';
 import { Container, Wrapper } from './styles';
 import Preview from './Preview';
 import { InputChangeEvent, PostDataType } from './types';
-import { CategoryRes } from '@/api/category/getCategories';
+import { Category, CategoryRes } from '@/api/category/getCategories';
 import Button from '@/components/common/Button';
 import { useCreatePost } from '@/api/post/useCreatePost';
 
 interface MarkdownPreviewProps {
-  categories: CategoryRes[];
+  categories: Category[];
 }
 
 const MarkdownPreview = ({ categories }: MarkdownPreviewProps) => {

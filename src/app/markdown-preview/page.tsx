@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function MarkdownPreviewPage() {
-  const categories = await getCategories();
+  const data = await getCategories();
 
-  return <MarkdownPreview categories={categories} />;
+  return <MarkdownPreview categories={data.categories} />;
 }

@@ -52,6 +52,7 @@ export async function POST(req: Request) {
         content: postData.content,
         subtitle: postData.subtitle,
         date: postData.date,
+        is_prev: false,
       },
     });
 
