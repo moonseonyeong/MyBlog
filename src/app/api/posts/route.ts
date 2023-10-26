@@ -23,10 +23,6 @@ export async function GET(request: NextRequest) {
     };
   });
 
-  if (categorizedPosts.length === 0) {
-    return getErrorResponse(404, 'category not found');
-  }
-
   return NextResponse.json(categorizedPosts);
 }
 

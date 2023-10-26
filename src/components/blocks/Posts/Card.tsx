@@ -37,7 +37,7 @@ const Card = ({ date, like, title, id }: P) => {
       <FlexBox gap={16}>
         <Description>{formatDateYYYYMMDD(new Date(date))}</Description>
         <FlexBox gap={8}>
-          <Image src={'/assets/heart.png'} alt={'좋아요 아이콘'} width={24} height={24} />
+          <Image src={'/assets/heart.png'} alt={'좋아요 아이콘'} width={16} height={16} />
           <Description>{like}</Description>
         </FlexBox>
       </FlexBox>
