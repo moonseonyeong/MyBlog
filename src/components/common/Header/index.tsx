@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import DarkMode from './DarkMode';
 import { HeaderContainer } from './styles';
 
@@ -10,7 +11,7 @@ interface HeaderProps {
 const Header = ({ isDarkMode }: HeaderProps) => {
   return (
     <HeaderContainer>
-      <div>HEADER</div>
+      <Link href='/'>HOME</Link>
       <DarkMode isDarkMode={isDarkMode} />
     </HeaderContainer>
   );

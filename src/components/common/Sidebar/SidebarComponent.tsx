@@ -4,6 +4,7 @@ import GithubIcon from '../@Icons/GithubIcon';
 import BlogIcon from '../@Icons/BlogIcon';
 import { Category, CategoryWrapper, Container, IconContainer, Profile } from './styles';
 import { Category as CategoryType } from '@/api/category/getCategories';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 interface SidebarProps {
   categories: CategoryType[];
@@ -11,7 +12,13 @@ interface SidebarProps {
 }
 
 const SidebarComponent = ({ categories, totalPostsCount }: SidebarProps) => {
-  const categoryId = Number(new URLSearchParams(location.search).get('categoryId')) || 0;
+  const params = useSearchParams();
+  const categoryId = Number(params.get('categoryId'));
+  const path = usePathname();
+
+  const isSelected = (id: number) => {
+    return path === '/posts' && categoryId === id;
+  };
 
   return (
     <Container gap={24}>
@@ -21,12 +28,12 @@ const SidebarComponent = ({ categories, totalPostsCount }: SidebarProps) => {
         <BlogIcon />
       </IconContainer>
       <CategoryWrapper>
-        <Category isSelected={categoryId === 0} href={`/posts`}>
+        <Category selected={isSelected(0)} href={`/posts`}>
           전체보기 ({totalPostsCount})
         </Category>
         {categories.map((category) => (
           <Category
-            isSelected={Number(categoryId) === category.id}
+            selected={isSelected(category.id)}
             href={`/posts?categoryId=${category.id}`}
             key={category.id}
           >

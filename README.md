@@ -10,7 +10,6 @@
 
 <img src="https://github.com/moonseonyeong/moon-develog/assets/85778994/32951b4f-e8cd-4437-9b64-a4d9f365b5b1" width="720" height="480" />
 
-
 ### 게시글 저장에 사용한 Repository
 
 - 벨로그에 작성했던 이전 게시글들을 puppeteer를 이용해 database에 저장했습니다.

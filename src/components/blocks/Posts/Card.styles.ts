@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(Link)`
   border-bottom: 1px solid #ddd;
   padding: 16px;
   width: 100%;

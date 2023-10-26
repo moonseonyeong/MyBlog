@@ -25,20 +25,13 @@ const Card = ({ date, like, title, id }: P) => {
     }
   };
   return (
-    <CardContainer
-      role='link'
-      tabIndex={0}
-      onClick={handleCardClick}
-      onKeyDown={handleCardKeyPress}
-      aria-label={`게시물: ${title}`}
-    >
+    <CardContainer href={`/post/${id}`} aria-label={`게시물: ${title}`}>
       <Title>{title}</Title>
 
       <FlexBox gap={16}>
         <Description>{formatDateYYYYMMDD(new Date(date))}</Description>
         <FlexBox gap={8}>
-          <Image src={'/assets/heart.png'} alt={'좋아요 아이콘'} width={16} height={16} />
-          <Description>{like}</Description>
+          <Description>Like : {like}</Description>
         </FlexBox>
       </FlexBox>
     </CardContainer>

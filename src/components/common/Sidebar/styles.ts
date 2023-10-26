@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { FlexBox, FlexColumnBox } from '../../../styles/common';
 import { mobileMediaQuery } from '@/styles/mediaQuery';
 import { css } from '@emotion/react';
+import Link from 'next/link';
 
 export const Container = styled(FlexColumnBox)`
   width: min-content;
@@ -18,10 +19,16 @@ export const CategoryWrapper = styled(FlexColumnBox)`
   gap: 8px;
 `;
 
-export const Category = styled.a<{ isSelected: boolean }>`
+export const Category = styled(Link)<{ selected: boolean }>`
   cursor: pointer;
-  ${({ isSelected }) =>
-    isSelected &&
+
+  :hover {
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+
+  ${({ selected }) =>
+    selected &&
     css`
       color: var(--primary-color);
       font-weight: 700;
