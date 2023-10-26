@@ -1,6 +1,6 @@
 import api from '..';
 
-type Category =
+type CategoryList =
   | 'Frontend'
   | 'javascript'
   | 'typescript'
@@ -19,12 +19,18 @@ type Category =
   | '회고';
 
 export interface CategoryRes {
+  categories: Category[];
+  totalPostsCount: number;
+}
+
+export interface Category {
   id: number;
-  name: Category;
+  name: CategoryList;
+  count: number;
 }
 
 export const getCategories = async () => {
-  const { data } = await api.get<CategoryRes[]>(`/categories`);
+  const { data } = await api.get<CategoryRes>(`/categories`);
 
   return data;
 };

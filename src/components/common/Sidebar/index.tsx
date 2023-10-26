@@ -2,7 +2,7 @@ import { getCategories } from '@/api/category/getCategories';
 import SidebarComponent from './SidebarComponent';
 
 export default async function Sidebar() {
-  const categories = await getCategories();
+  const data = await getCategories();
 
-  return <SidebarComponent categories={categories} />;
+  return <SidebarComponent categories={data.categories} totalPostsCount={data.totalPostsCount} />;
 }
