@@ -9,11 +9,9 @@ datasource db {
 }
 
 model categories {
-  id   Int     @id @default(autoincrement())
-  name String? @db.VarChar(30)
-
+  id    Int     @id @default(autoincrement())
+  name  String? @db.VarChar(30)
   posts posts[]
-  old_posts old_posts[]
 }
 
 model comments {
@@ -27,36 +25,20 @@ model comments {
 }
 
 model posts {
-  id          Int       @id @default(autoincrement())
-  title       String?   @db.VarChar(255)
-  subtitle    String?   @db.VarChar(255)
-  content     String?   @db.Text
-  is_prev     Int       @default(0)
+  id          Int         @id @default(autoincrement())
+  title       String?     @db.VarChar(255)
+  subtitle    String?     @db.VarChar(255)
+  content     String?     @db.Text
+  is_prev     Boolean
   category_id Int?
-  date        DateTime? @db.Date
+  date        DateTime?   @db.Date
   like        Int?
   series_id   Int?
   view_cnt    Int?
-
-  category    categories?   @relation(fields: [category_id], references: [id])
+  category    categories? @relation(fields: [category_id], references: [id])
 }
 
 model series {
   id    Int     @id @default(autoincrement())
   title String? @db.VarChar(255)
-}
-
-model old_posts {
-  id          Int       @id @default(autoincrement())
-  title       String?   @db.VarChar(255)
-  subtitle    String?   @db.VarChar(255)
-  content     String?   @db.Text
-  is_prev     Boolean
-  category_id Int?
-  date        DateTime? @db.Date
-  like        Int?
-  series_id   Int?
-  view_cnt    Int?
-  
-  category    categories?   @relation(fields: [category_id], references: [id])
 }

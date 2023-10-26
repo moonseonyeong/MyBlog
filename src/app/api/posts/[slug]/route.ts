@@ -6,27 +6,15 @@ export async function GET(request: NextRequest) {
   const params = request.nextUrl.pathname;
   const id = Number(params.split('/')[3]);
   let _post;
-  const prevPostNum = Number(process.env.NEXT_PUBLIC_PREV_POST_NUM);
 
-  if (id <= prevPostNum) {
-    _post = await prisma.old_posts.findFirst({
-      where: {
-        id: id,
-      },
-      include: {
-        category: true,
-      },
-    });
-  } else {
-    _post = await prisma.posts.findFirst({
-      where: {
-        id: id,
-      },
-      include: {
-        category: true,
-      },
-    });
-  }
+  _post = await prisma.posts.findFirst({
+    where: {
+      id: id,
+    },
+    include: {
+      category: true,
+    },
+  });
 
   if (!_post) {
     return getErrorResponse(404, 'Post not found');

@@ -5,12 +5,11 @@ export async function GET() {
   const categoriesWithPosts = await prisma.categories.findMany({
     include: {
       posts: true,
-      old_posts: true,
     },
   });
-  9;
+
   const categories = categoriesWithPosts.map((category) => {
-    const allPosts = [...category.posts, ...category.old_posts];
+    const allPosts = category.posts;
     const filteredPosts = allPosts.filter((post) => post.category_id === category.id);
 
     return {
@@ -20,7 +19,7 @@ export async function GET() {
     };
   });
 
-  const totalPostsCount = (await prisma.posts.count()) + (await prisma.old_posts.count());
+  const totalPostsCount = await prisma.posts.count();
 
   const response = {
     categories,

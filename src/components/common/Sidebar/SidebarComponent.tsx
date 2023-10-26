@@ -21,7 +21,7 @@ const SidebarComponent = ({ categories, totalPostsCount }: SidebarProps) => {
       <CategoryWrapper>
         <Category href={`/posts`}>전체보기 ({totalPostsCount})</Category>
         {categories.map((category) => (
-          <Category href={`/posts/${category.id}`} key={category.id}>
+          <Category href={`/posts?categoryId=${category.id}`} key={category.id}>
             {category.name} ({category.count})
           </Category>
         ))}

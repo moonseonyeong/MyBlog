@@ -7,8 +7,13 @@ export const metadata: Metadata = {
   description: 'Posts',
 };
 
-export default async function PostsPage() {
-  const posts = await getPosts();
+export default async function PostsPage({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | undefined };
+}) {
+  const categoryId = searchParams?.categoryId;
+  const posts = await getPosts(categoryId);
 
-  return <Posts />;
+  return <Posts posts={posts} />;
 }

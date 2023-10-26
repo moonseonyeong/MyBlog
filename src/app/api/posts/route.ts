@@ -1,12 +1,33 @@
 import { PostDataType } from '@/components/blocks/MarkdownPreview/types';
 import { prisma } from '@/lib/prisma';
 import { getErrorResponse } from '@/utils/helpers';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET() {
-  const posts = await prisma.posts.findMany();
+export async function GET(request: NextRequest) {
+  const params = request.nextUrl.searchParams;
+  const categoryId = params.get('categoryId');
 
-  return NextResponse.json(posts);
+  const _categorizedPosts = await prisma.posts.findMany({
+    where: {
+      category_id: Number(categoryId) || undefined,
+    },
+  });
+
+  const categorizedPosts = _categorizedPosts.map((post) => {
+    return {
+      id: post.id,
+      title: post.title,
+      date: post.date,
+      like: post.like,
+      subTitle: post.subtitle,
+    };
+  });
+
+  if (categorizedPosts.length === 0) {
+    return getErrorResponse(404, 'category not found');
+  }
+
+  return NextResponse.json(categorizedPosts);
 }
 
 type BodyType = {
