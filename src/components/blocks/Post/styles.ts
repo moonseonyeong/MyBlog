@@ -6,7 +6,7 @@ export const PostContainer = styled(FlexColumnBox)`
   width: 100%;
 
   img {
-    width: 50%;
+    width: 100%;
   }
 
   a {
@@ -35,7 +35,13 @@ export const PostDate = styled(Tag)``;
 
 export const PostCategory = styled(Tag)``;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  * {
+    width: 100%;
+  }
+  width: 100%;
+  overflow-x: scroll;
+`;
 
 export const PostInfoWrapper = styled(FlexBox)`
   gap: 8px;
