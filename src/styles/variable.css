@@ -22,6 +22,7 @@
   --tag-text-color: #47bfbd;
 
   --card-background: #f8f9fa; /* #f5f7fa */
+  --overlay: rgba(0, 0, 0, 0.5);
 }
 
 /* 다크테마 */
