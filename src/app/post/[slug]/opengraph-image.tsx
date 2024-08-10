@@ -1,5 +1,5 @@
 import { getPost } from '@/api/post/getPost';
-import { ImageResponse } from 'next/server';
+import { ImageResponse } from 'next/og';
 
 export const size = {
   width: 500,

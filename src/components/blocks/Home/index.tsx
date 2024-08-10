@@ -1,7 +1,7 @@
 'use client';
 
 const Home = () => {
-  return <div>HOME</div>;
+  return <div>next version up</div>;
 };
 
 export default Home;

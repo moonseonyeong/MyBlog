@@ -35,7 +35,7 @@ export default function RootLayout({
             <div id='__container'>
               <Header isDarkMode={isDarkMode} />
               <div id='__content_wrapper'>
-                <Sidebar />
+                {/* <Sidebar /> */}
                 <div id='__content'>{children}</div>
               </div>
               <Footer />

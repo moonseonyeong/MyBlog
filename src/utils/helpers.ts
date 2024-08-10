@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/og';
 
 export const getErrorResponse = (status: number = 500, message: string) => {
   return new NextResponse(

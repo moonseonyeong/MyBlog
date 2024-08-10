@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { getErrorResponse } from '@/utils/helpers';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/og';
 
 export async function GET(request: NextRequest) {
   const params = request.nextUrl.pathname;
